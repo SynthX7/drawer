@@ -6,39 +6,46 @@ body {
 }
 .tarefa {
     display: flex;
-    align-items: left;
-    width: 50%;
+    align-items: center;
+
+    width: 55%;
     height: 100px;
 
     box-shadow: 0 3px 3px 0 rgba(65,69,73,.3),0 1px 3px 1px rgba(65,69,73,.15);
     
     border-radius: 20px;
+    
 }
 
 .tarefa input[type="checkbox"] {
     -webkit-appearance: none; /* Remover a aparência padrão no WebKit */
     -moz-appearance: none; /* Remover a aparência padrão no Firefox */
     appearance: none; /* Remover a aparência padrão em navegadores compatíveis */
-    width: 20px; /* Largura do checkbox */
-    height: 20px; /* Altura do checkbox */
+    width: 25px; /* Largura do checkbox */
+    height: 25px; /* Altura do checkbox */
     background-color: #fff; /* Cor de fundo */
-    border: 2px solid #000; /* Borda */
+    border: 1px solid #000; /* Borda */
     border-radius: 50%; /* Bordas arredondadas */
     cursor: pointer; /* Cursor quando sobre o checkbox */
     display: inline-block; /* Exibição inline-block */
     position: relative; /* Posição relativa */
+    margin-left: 20px;
+
 }
 .tarefa input[type="checkbox"]:checked {
     background-color: #000; /* Cor de fundo quando marcado */
 }
 .tarefa input[type="checkbox"]:checked::after {
+    display: flex;
     content: '✔'; /* Símbolo de checado */
     color: #fff; /* Cor do símbolo */
-    font-size: 16px; /* Tamanho do símbolo */
+    font-size: 25px; /* Tamanho do símbolo */
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 10%;
+    left: 25%;
     transform: translate(-50%, -50%); /* Centralizar o símbolo */
+
+    margin: 15px;
 }
 
 
@@ -46,6 +53,8 @@ body {
     margin-top: 3.5%;
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
+    margin-bottom: 3%;
 }
 
 .tarefa h2, .tarefa p {
@@ -53,7 +62,7 @@ body {
 }
 .texto-tarefa h2 p {
     margin-bottom: 5%;
-    font-size: 30px;
+    font-size: 35px;
 }
 .texto-tarefa h2 {
     font-weight: 300;
@@ -63,8 +72,31 @@ body {
 }
 
 .criar {
-    width: 40px;
-    height: 40px;
-    box-shadow: 0 3px 3px 0 rgba(65,69,73,.3),0 1px 3px 1px rgba(65,69,73,.15);
+    background-color: #e3e3e3;
+    border: none;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 4px 4px 0 rgba(33, 34, 36, 0.3),0 1px 3px 1px rgba(33, 34, 36, 0.3);
     border-radius: 10px;
+
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+
+    margin: 25px;
+}
+
+.criar:hover {
+    background-color: #cbcbcb;
+}
+
+.criar:active {
+    background-color: #989898;
+}
+
+.criar img {
+    display: block;
+    width: 100%; /* ajuste conforme necessário */
+    height: auto; /* mantém a proporção da imagem */
+    border: none;
 }
