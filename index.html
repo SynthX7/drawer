@@ -14,8 +14,8 @@
     <div class="tarefa">
       <input type="checkbox">
       <div class="texto-tarefa">
-        <h2>Tarefa</h2>
-        <p>Descrição da tarefa</p>
+        <h2 id="task">Tarefa</h2>
+        <p id="desc">Descrição da tarefa</p>
       </div>
     </div><br>
     <button class="criar" onclick="toggleVisibility()">
@@ -23,10 +23,13 @@
     </button>
     <div id="editar" class="hidden">
       <form id="form">
-        <input type="text" placeholder="Título"><br>
-        <input class="descricao" type="text" placeholder="Descrição"><br>
-        <input type="datetime-local"><br>
-        <button onclick="toggleVisibility()">Criar</button>
+        <label for="nome">Título:</label><br>
+        <input type="text" id="titulo" name="titulo"><br><br>
+
+        <label for="email">Descrição:</label><br>
+        <input type="text" id="descricao" name="descricao"><br><br>
+
+        <button type="submit" onclick="toggleVisibility()">Enviar</button>
       </form>
     </div>
     <script src="scripts.js"></script>
