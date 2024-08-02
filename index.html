@@ -17,10 +17,18 @@
         <h2>Tarefa</h2>
         <p>Descrição da tarefa</p>
       </div>
-    </div>
-    <button class="criar">
+    </div><br>
+    <button class="criar" onclick="toggleVisibility()">
       <img src="imgs/plus-icon-black.png" alt="+">
     </button>
+    <div id="editar" class="hidden">
+      <form id="form">
+        <input type="text" placeholder="Título"><br>
+        <input class="descricao" type="text" placeholder="Descrição"><br>
+        <input type="datetime-local"><br>
+        <button onclick="toggleVisibility()">Criar</button>
+      </form>
+    </div>
     <script src="scripts.js"></script>
   </body>
 </html>

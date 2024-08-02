@@ -3,8 +3,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #f8f8f8;
 }
 .tarefa {
+    background-color: white;
     display: flex;
     align-items: center;
 
@@ -99,4 +101,57 @@ body {
     width: 100%; /* ajuste conforme necessário */
     height: auto; /* mantém a proporção da imagem */
     border: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Para garantir que o formulário seja fixo e centralizado */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Aparência */
+    box-shadow: 0 8px 16px 0 rgba(33, 34, 36, 0.3), 0 4px 8px 1px rgba(33, 34, 36, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    
+    /* Tamanhos */
+    width: 90%;
+    max-width: 300px;
+    background-color: white;
+}
+
+form input {
+    box-shadow: inset 0 2px 2px 0 rgba(65,69,73,.3), 0 1px 3px 1px rgba(65,69,73,.15);
+    padding: 10px;
+    border-radius: 16px;
+    margin: -2%;
+    width: 100%;
+}
+
+form button {
+    padding: 10px;
+    width: 100%;
+    border-radius: 16px;
+    margin-top: 10%;
+}
+
+.descricao {
+    width: 100%;
+    height: 80px;  /* Define a altura desejada */
+    padding: 10px;  /* Adiciona um pouco de espaço interno */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura e altura total */
+    overflow: auto; /* Adiciona barras de rolagem se o texto exceder a área visível */
+}
+
+.hidden {
+    display: none;
+}
+.visible {
+    display: flex;
 }
