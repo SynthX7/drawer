@@ -1,30 +1,45 @@
+/* Estilos gerais */
 body {
-    font-family: "Prompt", sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f8f8f8;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Cor de fundo suave */
+
 }
 
 .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
+
+#container {
+    width: 100%;
+    padding: 10px;
 }
 
 .tarefa {
-    background-color: white;
     display: flex;
     align-items: center;
-
-    width: 350%;
-    max-width: 600px;
-    height: 100px;
-
-    box-shadow: 0 3px 3px 0 rgba(65,69,73,.3),0 1px 3px 1px rgba(65,69,73,.15);
-    
-    border-radius: 20px;
+    border: 1px solid #ddd;
     margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 600px; /* Limita a largura máxima */
 }
+
+.tarefa:hover {
+    background-color: #f9f9f9; /* Cor de fundo ao passar o mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
 
 .tarefa input[type="checkbox"] {
     -webkit-appearance: none; /* Remover a aparência padrão no WebKit */
@@ -38,12 +53,14 @@ body {
     cursor: pointer; /* Cursor quando sobre o checkbox */
     display: inline-block; /* Exibição inline-block */
     position: relative; /* Posição relativa */
-    margin-left: 20px;
-
+    margin-left: 8px;
+    margin-right: 15px;
 }
+
 .tarefa input[type="checkbox"]:checked {
     background-color: #000; /* Cor de fundo quando marcado */
 }
+
 .tarefa input[type="checkbox"]:checked::after {
     display: flex;
     color: #fff; /* Cor do símbolo */
@@ -52,127 +69,176 @@ body {
     top: 10%;
     left: 25%;
     transform: translate(-50%, -50%); /* Centralizar o símbolo */
-
     margin: 15px;
 }
 
-
 .texto-tarefa {
-    margin-top: 3.5%;
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    margin-bottom: 3%;
+    flex: 1;
 }
 
-.tarefa h2, .tarefa p {
+.task {
     margin: 0;
+    font-size: 1.2em;
+    font-weight: 500;
 }
-.texto-tarefa h2 p {
-    margin-bottom: 5%;
-    font-size: 35px;
+
+.desc {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.9em;
 }
-.texto-tarefa h2 {
-    font-weight: 300;
-}
-.texto-tarefa p{
-    font-weight: 200;
+
+#saudacoes {
+    text-align: center;
+    padding: 20px;
+    font-size: 2em;
+    color: #333;
 }
 
 .criar {
-    background-color: #e3e3e3;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-
-    margin: 25px;
-}
-
-.criar:hover {
-    background-color: #ececec;
-}
-
-.criar:active {
-    width: 49px;
-    height: 49px;
-    background-color: #ececec;
-    box-shadow: inset 0 4px 4px 0 rgba(33, 34, 36, 0.3), inset 0 1px 3px 1px rgba(33, 34, 36, 0.3);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #b3b3b3;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    bottom: 20px;
+    right: 20px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .criar img {
-    display: block;
-    width: 100%; /* ajuste conforme necessário */
-    height: auto; /* mantém a proporção da imagem */
-    border: none;
+    width: 30px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: 30px;
+    object-fit: contain; /* Mantém a proporção da imagem */
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    /* Para garantir que o formulário seja fixo e centralizado */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    /* Aparência */
-    box-shadow: 0 8px 16px 0 rgba(33, 34, 36, 0.3), 0 4px 8px 1px rgba(33, 34, 36, 0.3);
-    border-radius: 20px;
-    padding: 20px;
-    
-    /* Tamanhos */
-    width: 90%;
-    max-width: 300px;
-    background-color: white;
-}
-
-form input {
-    box-shadow: inset 0 2px 2px 0 rgba(65,69,73,.3), inset 0 1px 3px 1px rgba(65,69,73,.15);
-    padding: 10px;
-    border-radius: 16px;
-    margin: -2%;
-    width: 100%;
-}
-
-form button {
-    background-color: #c7c7c7;
-    padding: 10px;
-    width: 100%;
-    border-radius: 16px;
-    margin-top: 10%;
-    box-shadow: 0 2px 2px 0 rgba(65,69,73,.3), 0 1px 3px 1px rgba(65,69,73,.15);
-
-}
-
-form button:hover {
-    background-color: rgb(231, 231, 231);
-}
-
-form button:active {
-    background-color: #c7c7c7;
-    box-shadow: inset 0 2px 2px 0 rgba(65,69,73,.3), inset 0 1px 3px 1px rgba(65,69,73,.15);
-
-}
-
-.descricao {
-    width: 100%;
-    height: 80px;  /* Define a altura desejada */
-    padding: 10px;  /* Adiciona um pouco de espaço interno */
-    box-sizing: border-box; /* Inclui o padding e a borda na largura e altura total */
-    overflow: auto; /* Adiciona barras de rolagem se o texto exceder a área visível */
+.criar:hover {
+    background-color: #ffffff;
+    transform: scale(1.0); /* Efeito de aumento ao passar o mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
 }
 
 .hidden {
     display: none;
 }
+
 .visible {
+    display: block;
+}
+
+form {
     display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200%;
+    max-width: 800px; /* Limita a largura máxima */
+    position: fixed;
+}
+
+input[type="text"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    width: 96%; /* Garante que o input ocupe toda a largura do formulário */
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%; /* Garante que o botão ocupe toda a largura do formulário */
+}
+
+button:hover {
+    background-color: #218838;
+    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px; /* Ajustar o tamanho da fonte para mobile */
+    }
+
+    .tarefa {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    
+    .tarefa input[type="checkbox"] {
+        -webkit-appearance: none; /* Remover a aparência padrão no WebKit */
+        -moz-appearance: none; /* Remover a aparência padrão no Firefox */
+        appearance: none; /* Remover a aparência padrão em navegadores compatíveis */
+        width: 20px; /* Largura do checkbox */
+        height: 20px; /* Altura do checkbox */
+        background-color: #fff; /* Cor de fundo */
+        border: 1px solid #000; /* Borda */
+        border-radius: 50%; /* Bordas arredondadas */
+        cursor: pointer; /* Cursor quando sobre o checkbox */
+        display: inline-block; /* Exibição inline-block */
+        position: relative; /* Posição relativa */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .tarefa input[type="checkbox"]:checked {
+        background-color: #000; /* Cor de fundo quando marcado */
+    }
+
+    .texto-tarefa {
+        font-size: 0.9em;
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-bottom: 5px;
+        margin-right: 50px;
+    }
+
+    .criar {
+        width: 50px;
+        height: 50px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    form {
+        width: 90%;
+        max-width: 500px;
+        padding: 15px;
+        align-items: center;
+        position: fixed;
+        justify-content: center;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    button {
+        padding: 8px;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
 }

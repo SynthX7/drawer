@@ -18,20 +18,17 @@
       <button class="criar" onclick="toggleVisibility()">
         <img src="imgs/plus-icon-black.png" alt="+">
       </button>
-      <button class="tema">
-        
-      </button>
       <div id="editar" class="hidden">
         <form id="form">
           <label for="titulo">Título:</label><br>
-          <input type="text" id="titulo" name="titulo"><br><br>
+          <input type="text" id="titulo" name="titulo" maxlength="40"><br><br>
 
           <label for="descricao">Descrição:</label><br>
-          <input type="text" id="descricao" name="descricao"><br><br>
+          <input type="text" id="descricao" name="descricao" maxlength="50"><br><br>
 
           <button type="submit" onclick="toggleVisibility()">Enviar</button>
         </form>
-      </div>
+      </div><br>
       <div id="container"></div> <!-- Container para as tarefas -->
       <script src="scripts.js"></script>
     </div>
