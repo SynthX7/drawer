@@ -1,6 +1,6 @@
 ## Licença
 
-Este projeto está licenciado sob a Licença de Uso e Distribuição de Código. Para mais detalhes, consulte o arquivo `LICENSE.txt` no diretório raiz deste repositório.
+Este projeto está licenciado sob a Licença de Uso e Distribuição de Código. Para mais detalhes, consulte o arquivo `LICENSE.md` no diretório raiz deste repositório.
 
 ---
 
