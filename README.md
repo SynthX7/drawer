@@ -33,7 +33,7 @@ Este projeto está licenciado sob a Licença de Uso e Distribuição de Código.
   Abra o arquivo `index.html`, isso deve abrir seu navegador padrão.
 
 ## Uso
-Após abrir o arquivo index.html, você verá a interface do aplicativo. Use os seguintes recursos:
+Após abrir o arquivo index.html, você verá a interface do aplicativo. Verá algo como isso:
 
 ![image](https://github.com/user-attachments/assets/7d28360b-99a6-48df-a6ef-089da5949ff9)
 
