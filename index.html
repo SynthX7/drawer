@@ -11,27 +11,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="tarefa">
-      <input type="checkbox">
-      <div class="texto-tarefa">
-        <h2 id="task">Tarefa</h2>
-        <p id="desc">Descrição da tarefa</p>
+    <div class="container">
+      <h1 id="saudacoes">
+
+      </h1>
+      <button class="criar" onclick="toggleVisibility()">
+        <img src="imgs/plus-icon-black.png" alt="+">
+      </button>
+      <button class="tema">
+        
+      </button>
+      <div id="editar" class="hidden">
+        <form id="form">
+          <label for="titulo">Título:</label><br>
+          <input type="text" id="titulo" name="titulo"><br><br>
+
+          <label for="descricao">Descrição:</label><br>
+          <input type="text" id="descricao" name="descricao"><br><br>
+
+          <button type="submit" onclick="toggleVisibility()">Enviar</button>
+        </form>
       </div>
-    </div><br>
-    <button class="criar" onclick="toggleVisibility()">
-      <img src="imgs/plus-icon-black.png" alt="+">
-    </button>
-    <div id="editar" class="hidden">
-      <form id="form">
-        <label for="nome">Título:</label><br>
-        <input type="text" id="titulo" name="titulo"><br><br>
-
-        <label for="email">Descrição:</label><br>
-        <input type="text" id="descricao" name="descricao"><br><br>
-
-        <button type="submit" onclick="toggleVisibility()">Enviar</button>
-      </form>
+      <div id="container"></div> <!-- Container para as tarefas -->
+      <script src="scripts.js"></script>
     </div>
-    <script src="scripts.js"></script>
   </body>
 </html>

@@ -5,19 +5,25 @@ body {
     justify-content: center;
     background-color: #f8f8f8;
 }
+
+.container {
+    align-items: center;
+    justify-content: center;
+}
+
 .tarefa {
     background-color: white;
     display: flex;
     align-items: center;
 
-    width: 90%;
+    width: 350%;
     max-width: 600px;
     height: 100px;
 
     box-shadow: 0 3px 3px 0 rgba(65,69,73,.3),0 1px 3px 1px rgba(65,69,73,.15);
     
     border-radius: 20px;
-    
+    margin-bottom: 15px;
 }
 
 .tarefa input[type="checkbox"] {
