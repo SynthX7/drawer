@@ -1,12 +1,13 @@
 Este projeto é um aplicativo de tarefas que permite aos usuários gerenciar suas tarefas de forma simples e eficiente. Ele foi desenvolvido para ajudar na organização e produtividade do dia a dia.
 
-## Funcionalidades até a última atualização (04/08/24)
+## Funcionalidades até a última atualização (07/08/24)
 
+- Alternar entre os temas claro e escuro;
 - Adicionar novas tarefas:
   - Adicionar título;
   - Adicionar descrição.
 - Marcar tarefas como concluídas;
-- Salvar as tarefas no navegador para que possa acessá-las mais tarde.
+- Salvar as tarefas no navegador e o tema para que possa acessá-los mais tarde.
 
 Não é íncrivel, pois o mesmo está em constante desenvolvimento todos os dias, então é lançada uma nova atualização assim que possível.
 
