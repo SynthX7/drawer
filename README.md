@@ -57,7 +57,7 @@ O ícone irá virar um sol, no qual se apertar, o tema claro volta.
 Viu como é fácil?
 
 ## Contribuição
-Se você gostaria de contribuir para este projeto, por favor, faça um fork do repositório e envie um pull request com suas alterações.
+Caso queira de contribuir para este projeto, por favor, faça um fork do repositório e envie um pull request com suas alterações.
 
-Suporte
-Caso encontre algum erro durante o processo ou dentro do app, por favor, abra uma issue no GitHub Issues ou entre em contato conosco através do e-mail: innovision.experiences@gmail.com.
+## Suporte
+Caso encontre algum erro durante o processo ou dentro do app, por favor, abra uma issue no GitHub Issues ou entre em contato conosco através do e-mail: [innovision.experiences@gmail.com]([innovision.experiences@gmail.com)
