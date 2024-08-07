@@ -1,21 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
-    criar(); // Inicializa a funcionalidade de criação de tarefas
     renderizarTarefas(); // Renderiza as tarefas ao carregar a página
+    criar(); // Inicializa a funcionalidade de criação de tarefas
+    atualizarSaudacao()
+    setInterval(atualizarSaudacao, 60000); // Atualiza a saudação
 
-    // Atualiza a saudação com base na hora
-    atualizarSaudacao();
-
-    // Aplica estilos específicos para mobile, se necessário
-    if (detectMobile()) {
-        aplicarEstilosMobile();
+    // Aplica o tema salvo
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        darkMode = true;
+        applyDarkTheme(); // Aplica o tema escuro
+    } else {
+        darkMode = false;
+        applyLightTheme(); // Aplica o tema claro
     }
 });
 
-function atualizarSaudacao() {
-    const saudacao = document.getElementById('saudacoes');
-    const now = new Date();
-    const hour = now.getHours();
+function verificarTemaTarefa() {
+    if (darkMode === false) {
+        const tarefaElements = document.querySelectorAll('.tarefaDark');
+        const checkboxElements = document.querySelectorAll('.checkboxDark');
 
+        tarefaElements.forEach(tarefa => {
+            tarefa.classList.remove('tarefaDark');
+        });
+
+        checkboxElements.forEach(checkbox => {
+            checkbox.classList.remove('checkboxDark');
+        });
+    } else {
+        const tarefaElements = document.querySelectorAll('.tarefa');
+        const checkboxElements = document.querySelectorAll('.checkbox');
+
+        tarefaElements.forEach(tarefa => {
+            tarefa.classList.add('tarefaDark');
+        });
+
+        checkboxElements.forEach(checkbox => {
+            checkbox.classList.add('checkboxDark');
+        });
+    }
+}
+
+// Função para atualizar a saudação com base na hora do dia
+function atualizarSaudacao() {
+    const saudacao = document.getElementById('saudacoes'); // Seleciona o elemento onde a saudação será exibida
+    const now = new Date(); // Obtém a data e hora atuais
+    const hour = now.getHours(); // Extrai a hora atual
+
+    // Atualiza o texto da saudação com base na hora do dia
     if (hour >= 22) {
         saudacao.innerText = "Bons sonhos";
     } else if (hour >= 18) {
@@ -29,30 +61,31 @@ function atualizarSaudacao() {
     }
 }
 
-let isVisible = false; // Controla o estado de visibilidade
+let isVisible = false; // Variável para controlar o estado de visibilidade de um elemento
 
+// Função para alternar a visibilidade de um elemento
 function toggleVisibility() {
-    const editar = document.getElementById('editar');
+    const editar = document.getElementById('editar'); // Seleciona o elemento que terá a visibilidade alternada
+    if (!editar) return; // Verifica se o elemento existe
 
-    if (isVisible) {
-        editar.classList.remove('visible');
-        editar.classList.add('hidden');
-    } else {
-        editar.classList.remove('hidden');
-        editar.classList.add('visible');
-    }
+    editar.classList.toggle('visible');
+    editar.classList.toggle('hidden');
 
-    isVisible = !isVisible;
+    isVisible = !isVisible; // Inverte o estado de visibilidade
 }
 
+// Função para criar novas tarefas
 function criar() {
-    const form = document.getElementById('form');
+    const form = document.getElementById('form'); // Seleciona o formulário de criação de tarefas
+    if (!form) return; // Verifica se o formulário existe
+
     form.addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Previne o comportamento padrão do formulário (envio)
 
-        const titulo = document.getElementById('titulo').value;
-        const descricao = document.getElementById('descricao').value;
+        const titulo = document.getElementById('titulo').value; // Obtém o valor do campo de título
+        const descricao = document.getElementById('descricao').value; // Obtém o valor do campo de descrição
 
+        // Valida se os campos estão preenchidos e exibe alertas se necessário
         if (titulo === "" && descricao === "") {
             alert("Campos vazios!");
             return;
@@ -61,35 +94,45 @@ function criar() {
             return;
         }
 
+        // Cria um novo objeto de tarefa
         const newTask = {
             titulo: titulo,
             descricao: descricao,
-            marcado: false
+            marcado: false // Inicialmente a tarefa não está marcada
         };
 
+        // Obtém a lista de tarefas armazenadas no localStorage ou inicializa como uma lista vazia
         const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-        tarefas.push(newTask);
-        localStorage.setItem('tarefas', JSON.stringify(tarefas));
+        tarefas.push(newTask); // Adiciona a nova tarefa à lista
+        localStorage.setItem('tarefas', JSON.stringify(tarefas)); // Atualiza o localStorage com a lista de tarefas
 
-        renderizarTarefas();
-        form.reset();
+        renderizarTarefas(); // Renderiza as tarefas para exibir a nova tarefa
+        form.reset(); // Limpa os campos do formulário
     });
 }
 
+// Função para renderizar as tarefas na tela
 function renderizarTarefas() {
-    const container = document.getElementById('container');
-    container.innerHTML = '';
+    const container = document.getElementById('container'); // Seleciona o elemento que irá conter as tarefas
+    if (!container) return; // Verifica se o container existe
 
-    const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+    container.innerHTML = ''; // Limpa o conteúdo atual do container
 
+    const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []; // Obtém a lista de tarefas armazenadas
+
+    // Itera sobre cada tarefa e a adiciona ao container
     tarefas.forEach((tarefa, index) => {
-        if (tarefa.marcado) return;
+        if (tarefa.marcado) return; // Ignora tarefas já marcadas
 
+        // Cria elementos para a nova tarefa
         const newTask = document.createElement('div');
         newTask.className = "tarefa";
+        newTask.id = `tarefa-${index}`; // Define um ID único para cada tarefa
 
         const inputNewTask = document.createElement('input');
         inputNewTask.type = "checkbox";
+        inputNewTask.className = "checkbox";
+        inputNewTask.id = `checkbox-${index}`; // Define um ID único para cada checkbox
         inputNewTask.checked = tarefa.marcado;
 
         const textsNewTask = document.createElement('div');
@@ -103,76 +146,94 @@ function renderizarTarefas() {
         descNewTask.className = "desc";
         descNewTask.textContent = tarefa.descricao;
 
+        // Adiciona os elementos criados ao DOM
         textsNewTask.appendChild(titleNewTask);
         textsNewTask.appendChild(descNewTask);
-
         newTask.appendChild(inputNewTask);
         newTask.appendChild(textsNewTask);
-
         container.appendChild(newTask);
 
+        // Adiciona um evento para atualizar o estado da tarefa quando o checkbox for alterado
         inputNewTask.addEventListener('change', function() {
             tarefas[index].marcado = this.checked;
             localStorage.setItem('tarefas', JSON.stringify(tarefas));
-            renderizarTarefas();
+            renderizarTarefas(); // Re-renderiza as tarefas para atualizar a visualização
+            verificarTemaTarefa();
         });
-    });
 
-    if (detectMobile()) {
-        aplicarEstilosMobile();
+        verificarTemaTarefa();
+    });
+}
+
+const elements = {
+    themeButton: document.getElementById('theme'),
+    iconTheme: document.getElementById('iconTheme'),
+    saudacoes: document.getElementById('saudacoes'),
+    toggleFormButton: document.getElementById('toggleForm'),
+    plusIcon: document.getElementById('plusIcon'),
+    editarDiv: document.getElementById('editar'),
+    tituloInput: document.getElementById('titulo'),
+    descricaoInput: document.getElementById('descricao'),
+    enviarButton: document.getElementById('enviar'),
+    containerDiv: document.getElementById('container'),
+};
+
+let darkMode = false;
+
+function toggleTheme() {
+    if (darkMode === false) {
+        applyDarkTheme();
+        darkMode = !darkMode;
+        console.log(darkMode)
+    } else {
+        applyLightTheme();
+        darkMode = !darkMode;
+        console.log(darkMode)
     }
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
 }
 
-function detectMobile() {
-    return /Mobi|Android/i.test(navigator.userAgent);
+function applyDarkTheme() {
+    document.body.style.backgroundColor = "#2a2a2a"; // Cor de fundo escura
+    elements.saudacoes.style.color = "#ffffff"; // Cor do texto clara
+
+    const tarefaElements = document.querySelectorAll('.tarefa');
+    const checkboxElements = document.querySelectorAll('.checkbox');
+    const formulario = document.querySelectorAll('.form');
+
+    formulario.forEach(formu => {
+        formu.classList.add('formDark'); // Adiciona a classe para o formulário
+    });
+    tarefaElements.forEach(tarefa => {
+        tarefa.classList.add('tarefaDark');
+    });
+
+    checkboxElements.forEach(checkbox => {
+        checkbox.classList.add('checkboxDark');
+    });
+
+    elements.iconTheme.src = 'imgs/light-icon.png';
 }
 
-function aplicarEstilosMobile() {
-    const body = document.body.style;
-    const tasks = document.getElementsByClassName('tarefa');
-    const checkboxes = document.querySelectorAll('.tarefa input[type="checkbox"]');
-    const texts = document.querySelectorAll('.texto-tarefa');
-    const criarButton = document.querySelector('.criar');
-    const form = document.querySelector('form');
-    const formInputs = form.querySelectorAll('input');
-    const formButton = form.querySelector('button');
+function applyLightTheme() {
+    document.body.style.backgroundColor = "#f0f2f5"; // Cor de fundo clara
+    elements.saudacoes.style.color = "#333"; // Cor do texto escura
 
-    body.fontSize = "10px";
+    const tarefaElements = document.querySelectorAll('.tarefaDark');
+    const checkboxElements = document.querySelectorAll('.checkboxDark');
+    const formulario = document.querySelectorAll('.form');
 
-    Array.from(tasks).forEach(task => {
-        task.style.height = "60px";
-        task.style.width = "100%";
+    formulario.forEach(formu => {
+        formu.classList.remove('formDark'); // Remove a classe para o formulário
     });
 
-    checkboxes.forEach(checkbox => {
-        checkbox.style.width = "15px";
-        checkbox.style.height = "15px";
+    tarefaElements.forEach(tarefa => {
+        tarefa.classList.remove('tarefaDark');
     });
 
-    texts.forEach(text => {
-        text.style.marginTop = "2%";
-        text.style.marginLeft = "10px";
-        text.style.marginBottom = "2%";
-        text.style.fontSize = "12px";
+    checkboxElements.forEach(checkbox => {
+        checkbox.classList.remove('checkboxDark');
     });
 
-    criarButton.style.position = "fixed";
-    criarButton.style.width = "40px";
-    criarButton.style.height = "40px";
-    criarButton.style.bottom = "5px";
-    criarButton.style.right = "5px";
-
-    form.style.width = "90%";
-    form.style.maxWidth = "250px";
-    form.style.padding = "10px";
-
-    formInputs.forEach(input => {
-        input.style.padding = "5px";
-        input.style.borderRadius = "10px";
-        input.style.width = "100%";
-    });
-
-    formButton.style.padding = "5px";
-    formButton.style.borderRadius = "10px";
-    formButton.style.marginTop = "5%";
+    elements.iconTheme.src = 'imgs/dark-icon.png';
 }

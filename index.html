@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>doList</title>
+<head>
+    <meta charset="UTF-8"> <!-- Define o conjunto de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define a largura da viewport e o nível de zoom inicial -->
+    <title>doList</title> <!-- Título da página exibido na aba do navegador -->
+
+    <!-- Link para o arquivo CSS que contém os estilos da página -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Links para as fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container">
-      <h1 id="saudacoes">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container"> <!-- Container principal da aplicação -->
+        
+        <!-- Botão para alternar o tema -->
+        <button id="theme" class="alternarTema" onclick="toggleTheme()">
+            <img id="iconTheme" src="imgs/dark-icon.png" alt="Icone de tema"> <!-- Ícone usado no botão -->
+        </button>
 
-      </h1>
-      <button class="criar" onclick="toggleVisibility()">
-        <img src="imgs/plus-icon-black.png" alt="+">
-      </button>
-      <div id="editar" class="hidden">
-        <form id="form">
-          <label for="titulo">Título:</label><br>
-          <input type="text" id="titulo" name="titulo" maxlength="40"><br><br>
+        <!-- Elemento para exibir a saudação -->
+        <h1 id="saudacoes"></h1>
 
-          <label for="descricao">Descrição:</label><br>
-          <input type="text" id="descricao" name="descricao" maxlength="50"><br><br>
+        <!-- Botão para criar uma nova tarefa -->
+        <button id="toggleForm" class="criar" onclick="toggleVisibility()">
+            <img id="plusIcon" src="imgs/plus-icon-black.png" alt="Adicionar tarefa"> <!-- Ícone usado no botão -->
+        </button>
 
-          <button type="submit" onclick="toggleVisibility()">Enviar</button>
-        </form>
-      </div><br>
-      <div id="container"></div> <!-- Container para as tarefas -->
-      <script src="scripts.js"></script>
+        <!-- Formulário para criação de tarefas, inicialmente oculto -->
+        <div id="editar" class="hidden">
+            <form id="form" class="form" class="formDark"> <!-- Formulário para criar novas tarefas -->
+                <label for="titulo">Título:</label><br>
+                <input type="text" id="titulo" name="titulo" maxlength="40"><br><br>
+
+                <label for="descricao">Descrição:</label><br>
+                <input type="text" id="descricao" name="descricao" maxlength="100"><br><br>
+
+                <!-- Botão para submeter o formulário -->
+                <button id="enviar" type="submit" onclick="toggleVisibility()">Enviar</button>
+            </form>
+        </div><br>
+
+        <!-- Container onde as tarefas serão renderizadas -->
+        <div id="container"></div>
+
+        <!-- Link para o arquivo JavaScript que contém a lógica da aplicação -->
+        <script src="scripts.js"></script>
     </div>
-  </body>
+</body>
 </html>

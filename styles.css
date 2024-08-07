@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
 /* Estilos gerais */
 body {
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f2f5; /* Cor de fundo suave */
-
+    background-color: #f0f2f5;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
     padding: 20px;
     display: flex;
@@ -16,60 +18,99 @@ body {
     align-items: center;
 }
 
-#container {
+.tarefa, .tarefaDark {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 10px;
     width: 100%;
-    padding: 10px;
+    max-width: 1000px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .tarefa {
-    display: flex;
-    align-items: center;
     border: 1px solid #ddd;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 10px;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    transition: background-color 0.3s, box-shadow 0.3s;
-    width: 100%;
-    max-width: 600px; /* Limita a largura máxima */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
 .tarefa:hover {
-    background-color: #f9f9f9; /* Cor de fundo ao passar o mouse */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
 }
 
+.tarefaDark {
+    border: 1px solid #474747;
+    background-color: #474747;
+    color: #dadada;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
 
-.tarefa input[type="checkbox"] {
-    -webkit-appearance: none; /* Remover a aparência padrão no WebKit */
-    -moz-appearance: none; /* Remover a aparência padrão no Firefox */
-    appearance: none; /* Remover a aparência padrão em navegadores compatíveis */
-    width: 25px; /* Largura do checkbox */
-    height: 25px; /* Altura do checkbox */
-    background-color: #fff; /* Cor de fundo */
-    border: 1px solid #000; /* Borda */
-    border-radius: 50%; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor quando sobre o checkbox */
-    display: inline-block; /* Exibição inline-block */
-    position: relative; /* Posição relativa */
-    margin-left: 8px;
+.tarefaDark:hover {
+    background-color: #595959;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+.tarefaDark p {
+    color: #bcbcbc;
+}
+
+.checkbox, .checkboxDark {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
     margin-right: 15px;
-}
-
-.tarefa input[type="checkbox"]:checked {
-    background-color: #000; /* Cor de fundo quando marcado */
-}
-
-.tarefa input[type="checkbox"]:checked::after {
     display: flex;
-    color: #fff; /* Cor do símbolo */
-    font-size: 25px; /* Tamanho do símbolo */
-    position: absolute;
-    top: 10%;
-    left: 25%;
-    transform: translate(-50%, -50%); /* Centralizar o símbolo */
-    margin: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox {
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.checkboxDark {
+    background-color: #474747;
+    border: 2.5px solid #e6e6e6;
+}
+
+.checkbox:checked {
+    background-color: #000;
+}
+
+.checkboxDark:checked {
+    background-color: #f7f7f7;
+}
+
+.checkbox:checked::after, .checkboxDark:checked::after {
+    content: '✓';
+    color: #fff;
+    font-size: 16px;
+}
+
+#container {
+    width: 70%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#saudacoes {
+    font-family: "League Spartan", sans-serif;
+    font-size: 3em;
+    text-align: center;
+    padding: 20px;
+    color: #333;
+    transition: color 0.3s;
 }
 
 .texto-tarefa {
@@ -88,19 +129,12 @@ body {
     font-size: 0.9em;
 }
 
-#saudacoes {
-    text-align: center;
-    padding: 20px;
-    font-size: 2em;
-    color: #333;
-}
-
 .criar {
     position: fixed;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background-color: #b3b3b3;
+    background-color: #474747;
     color: white;
     border: none;
     font-size: 1.5em;
@@ -108,22 +142,97 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    bottom: 20px;
-    right: 20px;
-    transition: background-color 0.3s, transform 0.3s;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .criar img {
-    width: 30px; /* Ajuste o tamanho da imagem conforme necessário */
+    width: 30px;
     height: 30px;
-    object-fit: contain; /* Mantém a proporção da imagem */
+    object-fit: contain;
+    outline: none;
+    border: none;
 }
 
 .criar:hover {
-    background-color: #ffffff;
-    transform: scale(1.0); /* Efeito de aumento ao passar o mouse */
+    background-color: #b67d51;
+    transform: scale(1.0);
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
 }
+
+.criar:active {
+    background-color: #dadada;
+    transform: scale(0.99);
+}
+
+.criar {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #927c6b;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.alternarTema {
+    position: fixed; /* Define a posição fixa na tela */
+    width: 60px; /* Define a largura do botão */
+    height: 60px; /* Define a altura do botão */
+    border-radius: 50%; /* Arredonda o botão para forma circular */
+    background-color: #927c6b;
+    color: white; /* Define a cor do texto como branca */
+    border: none; /* Remove a borda do botão */
+    font-size: 1.5em; /* Define o tamanho da fonte do botão */
+    display: flex; /* Define o botão como flex container */
+    align-items: center; /* Alinha os itens ao centro verticalmente */
+    justify-content: center; /* Alinha os itens ao centro horizontalmente */
+    cursor: pointer; /* Define o cursor como ponteiro ao passar sobre o botão */
+    bottom: 300px; /* Posiciona o botão a 20px do fundo da tela */
+    right: 300px; /* Posiciona o botão a 20px da direita da tela */
+    transition: background-color 0.3s, transform 0.3s; /* Define uma transição suave para cor de fundo e transformação */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Define uma transição suave para cor de fundo e sombra */
+    top: 0;
+    left: 0;
+    margin: 10px; /* Adicione um pouco de margem se desejar */
+
+}
+
+.alternarTema img {
+    width: 30px; /* Define a largura da imagem dentro do botão */
+    height: 30px; /* Define a altura da imagem dentro do botão */
+    object-fit: contain; /* Mantém a proporção da imagem */
+    outline: none;
+    border: none;
+}
+
+.alternarTema img:focus,
+.alternarTema img:active {
+    outline: none;
+    border: none;
+}
+
+.alternarTema:hover {
+    background-color: #b67d51;
+    transform: scale(1.0); /* Efeito de aumento ao passar o mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao passar o mouse */
+    transition: background-color 0.3s, transform 0.3s; /* Define uma transição suave para cor de fundo e transformação */
+}
+
+.alternarTema:active {
+    background-color: #dadada; /* Muda a cor de fundo ao passar o mouse */
+    transform: scale(0.99); /* Efeito de aumento ao passar o mouse */
+}
+
 
 .hidden {
     display: none;
@@ -133,16 +242,51 @@ body {
     display: block;
 }
 
-form {
+.form, .formDark {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
-    padding: 20px;
+    padding: 20px 150px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 200%;
-    max-width: 800px; /* Limita a largura máxima */
-    position: fixed;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+.form {
+    background-color: #fff;
+}
+
+.formDark {
+    background-color: #474747;
+    color: white; /* Define a cor do texto como branca */
+}
+
+.formDark input[type="text"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    width: 96%;
+    color: white;
+    background-color: #474747;
+}
+
+.formDark button[type="submit"] {
+    background-color: #9f6d43;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.formDark button[type="submit"]:hover {
+    background-color: #c57533;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 input[type="text"] {
@@ -151,94 +295,21 @@ input[type="text"] {
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1em;
-    width: 96%; /* Garante que o input ocupe toda a largura do formulário */
+    width: 96%;
 }
 
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    background-color: #28a745;
+button[type="submit"] {
+    background-color: #995925;
     color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s, transform 0.3s;
-    width: 100%; /* Garante que o botão ocupe toda a largura do formulário */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-button:hover {
-    background-color: #218838;
-    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
-}
-
-/* Estilos para dispositivos móveis */
-@media (max-width: 600px) {
-    body {
-        font-size: 14px; /* Ajustar o tamanho da fonte para mobile */
-    }
-
-    .tarefa {
-        height: auto;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-    }
-
-    
-    .tarefa input[type="checkbox"] {
-        -webkit-appearance: none; /* Remover a aparência padrão no WebKit */
-        -moz-appearance: none; /* Remover a aparência padrão no Firefox */
-        appearance: none; /* Remover a aparência padrão em navegadores compatíveis */
-        width: 20px; /* Largura do checkbox */
-        height: 20px; /* Altura do checkbox */
-        background-color: #fff; /* Cor de fundo */
-        border: 1px solid #000; /* Borda */
-        border-radius: 50%; /* Bordas arredondadas */
-        cursor: pointer; /* Cursor quando sobre o checkbox */
-        display: inline-block; /* Exibição inline-block */
-        position: relative; /* Posição relativa */
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
-    .tarefa input[type="checkbox"]:checked {
-        background-color: #000; /* Cor de fundo quando marcado */
-    }
-
-    .texto-tarefa {
-        font-size: 0.9em;
-        margin-top: 5px;
-        margin-left: 10px;
-        margin-bottom: 5px;
-        margin-right: 50px;
-    }
-
-    .criar {
-        width: 50px;
-        height: 50px;
-        bottom: 10px;
-        right: 10px;
-    }
-
-    form {
-        width: 90%;
-        max-width: 500px;
-        padding: 15px;
-        align-items: center;
-        position: fixed;
-        justify-content: center;
-    }
-
-    input[type="text"] {
-        width: 100%;
-        padding: 8px;
-        border-radius: 8px;
-    }
-
-    button {
-        padding: 8px;
-        border-radius: 8px;
-        margin-top: 10px;
-    }
+button[type="submit"]:hover {
+    background-color: #c57533;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.1);
 }
