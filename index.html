@@ -16,11 +16,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="lateralMenu" class="hidden">
+        <a href="index.html" class="menuTarefas">
+            <img src="imgs/tasks-white.png" alt="Ícone" style="width: 15px; height: 10px; margin-right: 10px; margin-left: -10px;"> Tarefas
+        </a>
+        <a href="config.html">
+            <img src="imgs/options-white.png" alt="Ícone" style="width: 15px; height: 10px; margin-right: 10px; margin-left: -10px;"> Configurações
+        </a>
+    </div>
     <div class="container"> <!-- Container principal da aplicação -->
         
         <!-- Botão para alternar o tema -->
-        <button id="theme" class="alternarTema" onclick="toggleTheme()">
-            <img id="iconTheme" src="imgs/dark-icon.png" alt="Icone de tema"> <!-- Ícone usado no botão -->
+        <button id="menu" class="menu" onclick="toggleMenu()">
+            <img id="iconMenu" src="imgs/menu-black.png" alt="Icone de menu"> <!-- Ícone usado no botão -->
         </button>
 
         <!-- Elemento para exibir a saudação -->

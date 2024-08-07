@@ -212,7 +212,6 @@ function applyDarkTheme() {
         checkbox.classList.add('checkboxDark');
     });
 
-    elements.iconTheme.src = 'imgs/light-icon.png';
 }
 
 function applyLightTheme() {
@@ -235,5 +234,14 @@ function applyLightTheme() {
         checkbox.classList.remove('checkboxDark');
     });
 
-    elements.iconTheme.src = 'imgs/dark-icon.png';
+}
+
+function toggleMenu() {
+    const menu = document.getElementById("lateralMenu");
+
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+    } else {
+        menu.classList.add('hidden');
+    }
 }

@@ -129,25 +129,8 @@ body {
     font-size: 0.9em;
 }
 
-.criar {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #474747;
-    color: white;
-    border: none;
-    font-size: 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    bottom: 30px;
-    right: 30px;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.criar img {
+/* Estilos para as imagens dentro dos botões menu e criar */
+.menu img, .criar img {
     width: 30px;
     height: 30px;
     object-fit: contain;
@@ -155,36 +138,20 @@ body {
     border: none;
 }
 
+/* Estilos para o hover nos botões menu e criar */
 .criar:hover {
     background-color: #b67d51;
     transform: scale(1.0);
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* Estilos para o active nos botões menu e criar */
 .criar:active {
     background-color: #dadada;
     transform: scale(0.99);
 }
 
-.criar {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #927c6b;
-    color: white;
-    border: none;
-    font-size: 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    bottom: 30px;
-    right: 30px;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.alternarTema {
+.menu {
     position: fixed; /* Define a posição fixa na tela */
     width: 60px; /* Define a largura do botão */
     height: 60px; /* Define a altura do botão */
@@ -197,42 +164,43 @@ body {
     align-items: center; /* Alinha os itens ao centro verticalmente */
     justify-content: center; /* Alinha os itens ao centro horizontalmente */
     cursor: pointer; /* Define o cursor como ponteiro ao passar sobre o botão */
-    bottom: 300px; /* Posiciona o botão a 20px do fundo da tela */
-    right: 300px; /* Posiciona o botão a 20px da direita da tela */
+    top: 10px; /* Posiciona o botão a 10px do topo da tela */
+    left: 10px; /* Posiciona o botão a 10px da esquerda da tela */
     transition: background-color 0.3s, transform 0.3s; /* Define uma transição suave para cor de fundo e transformação */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Define uma transição suave para cor de fundo e sombra */
-    top: 0;
-    left: 0;
-    margin: 10px; /* Adicione um pouco de margem se desejar */
-
+    margin: 10px; /* Adiciona um pouco de margem se desejar */
 }
 
-.alternarTema img {
-    width: 30px; /* Define a largura da imagem dentro do botão */
-    height: 30px; /* Define a altura da imagem dentro do botão */
-    object-fit: contain; /* Mantém a proporção da imagem */
-    outline: none;
-    border: none;
-}
-
-.alternarTema img:focus,
-.alternarTema img:active {
-    outline: none;
-    border: none;
-}
-
-.alternarTema:hover {
+/* Estilos para o hover no botão menu */
+.menu:hover {
     background-color: #b67d51;
-    transform: scale(1.0); /* Efeito de aumento ao passar o mouse */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao passar o mouse */
-    transition: background-color 0.3s, transform 0.3s; /* Define uma transição suave para cor de fundo e transformação */
+    transform: scale(1.0);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
 }
 
-.alternarTema:active {
-    background-color: #dadada; /* Muda a cor de fundo ao passar o mouse */
-    transform: scale(0.99); /* Efeito de aumento ao passar o mouse */
+/* Estilos para o active no botão menu */
+.menu:active {
+    background-color: #dadada;
+    transform: scale(0.99);
 }
 
+
+.criar {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #927c6b;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
 
 .hidden {
     display: none;
@@ -259,7 +227,7 @@ body {
 
 .formDark {
     background-color: #474747;
-    color: white; /* Define a cor do texto como branca */
+    color: white;
 }
 
 .formDark input[type="text"] {
@@ -312,4 +280,38 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #c57533;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#lateralMenu {
+    width: 200px; /* Largura do menu */
+    position: fixed; /* Fixa o menu na posição */
+    top: 0; /* Alinha ao topo da página */
+    left: 0; /* Alinha à esquerda da página */
+    height: 100%; /* Altura total da página */
+    background-color: #111; /* Cor de fundo do menu */
+    padding-top: 20px; /* Espaçamento no topo */
+    transition: transform 1s ease; /* Animação para a transição */
+    transform: translateX(0); /* Posição inicial do menu */
+}
+
+#lateralMenu.hidden {
+    transform: translateX(-100%); /* Esconde o menu movendo-o para fora da tela */
+}
+
+#lateralMenu a {
+    padding: 10px 15px; /* Espaçamento interno dos links */
+    text-decoration: none; /* Remove sublinhado dos links */
+    font-size: 18px; /* Tamanho da fonte */
+    color: white; /* Cor do texto */
+    display: block; /* Faz com que cada link ocupe a largura total */
+    transition: background-color 0.3s;
+}
+
+#lateralMenu a:hover {
+    background-color: #575757; /* Cor de fundo quando o link é hover */
+}
+
+
+.menuTarefas {
+    margin-top: 40%;
 }
