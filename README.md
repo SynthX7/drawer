@@ -23,13 +23,13 @@ Este projeto está licenciado sob a Licença de Uso e Distribuição de Código.
   `cd seu/diretorio`
   
   Execute o seguinte comando para clonar todos os arquivos deste repositório:
-  `git clone https://github.com/SynthX7/app-de-tarefas`
+  `git clone https://github.com/SynthX7/drawer`
 
 
 2. **Abrindo o Projeto**
 
   Navegue até o diretório do projeto:
-  `cd app-de-tarefas`
+  `cd drawer`
 
   Abra o arquivo `index.html`, isso deve abrir seu navegador padrão.
 
