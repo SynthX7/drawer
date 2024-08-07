@@ -23,7 +23,7 @@ Este projeto está licenciado sob a Licença de Uso e Distribuição de Código.
   `cd seu/diretorio`
   
   Execute o seguinte comando para clonar todos os arquivos deste repositório: <br>
-  <pre style="background-color: #000; color: #fff; padding: 10px; border-radius: 5px; overflow-x: auto;">
+  <pre style="background-color: #000; color: #fff; padding: 5px; border-radius: 5px; overflow-x: auto;">
         <code style="font-family: monospace;">
 git clone http://github.com/SynthX7/drawer
         </code>
