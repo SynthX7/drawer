@@ -19,10 +19,10 @@ Este projeto está licenciado sob a Licença de Uso e Distribuição de Código.
 
 1. **Clonando o Repositório**
 
-  Abra seu terminal (ou git bash) e navegue até o diretório onde deseja armazenar os arquivos:
+  Abra seu terminal (ou git bash) e navegue até o diretório onde deseja armazenar os arquivos: <br>
   `cd seu/diretorio`
   
-  Execute o seguinte comando para clonar todos os arquivos deste repositório:
+  Execute o seguinte comando para clonar todos os arquivos deste repositório: <br>
   `git clone https://github.com/SynthX7/drawer`
 
 
