@@ -60,4 +60,5 @@ Viu como é fácil?
 Caso queira de contribuir para este projeto, por favor, faça um fork do repositório e envie um pull request com suas alterações.
 
 ## Suporte
-Caso encontre algum erro durante o processo ou dentro do app, por favor, abra uma issue no GitHub Issues ou entre em contato conosco através do e-mail: [innovision.experiences@gmail.com](malito:innovision.experiences@gmail.com)
+Caso encontre algum erro durante o processo ou dentro do app, por favor, abra uma issue no GitHub Issues ou entre em contato conosco através do e-mail: <br>
+[innovision.experiences@gmail.com](mailto:innovision.experiences@gmail.com)
