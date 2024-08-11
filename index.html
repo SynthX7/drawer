@@ -4,7 +4,7 @@
     <link rel="icon" href="imgs/logo.png">
     <meta charset="UTF-8"> <!-- Define o conjunto de caracteres como UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define a largura da viewport e o nível de zoom inicial -->
-    <title>Drawer</title> <!-- Título da página exibido na aba do navegador -->
+    <title>Tarefas - Drawer</title> <!-- Título da página exibido na aba do navegador -->
 
     <!-- Link para o arquivo CSS que contém os estilos da página -->
     <link rel="stylesheet" href="styles.css">
@@ -20,16 +20,16 @@
         <a href="index.html" class="menuTarefas">
             <img src="imgs/tasks-white.png" alt="Ícone" style="width: 15px; height: 10px; margin-right: 10px; margin-left: -10px;"> Tarefas
         </a>
-        <a href="config.html">
-            <img src="imgs/options-white.png" alt="Ícone" style="width: 15px; height: 10px; margin-right: 10px; margin-left: -10px;"> Configurações
-        </a>
     </div>
+
     <div class="container"> <!-- Container principal da aplicação -->
         
-        <!-- Botão para alternar o tema -->
+        <!-- Botão para abrir o menu -->
         <button id="menu" class="menu" onclick="toggleMenu()">
             <img id="iconMenu" src="imgs/menu-black.png" alt="Icone de menu"> <!-- Ícone usado no botão -->
         </button>
+
+        <button onclick="toggleTheme()">tema</button>
 
         <!-- Elemento para exibir a saudação -->
         <h1 id="saudacoes"></h1>
@@ -42,16 +42,13 @@
         <!-- Formulário para criação de tarefas, inicialmente oculto -->
         <div id="editar" class="hidden">
             <form id="form" class="form" class="formDark"> <!-- Formulário para criar novas tarefas -->
-                <label for="titulo">Título:</label><br>
-                <input type="text" id="titulo" name="titulo" maxlength="40"><br><br>
-
-                <label for="descricao">Descrição:</label><br>
-                <input type="text" id="descricao" name="descricao" maxlength="100"><br><br>
+                <input placeholder="Título" type="text" id="titulo" name="titulo" maxlength="40"><br><br>
+                <textarea placeholder="Descrição" type="text" id="descricao" name="descricao" maxlength="100" rows="4"></textarea><br>
 
                 <!-- Botão para submeter o formulário -->
                 <button id="enviar" type="submit" onclick="toggleVisibility()">Enviar</button>
             </form>
-        </div><br>
+        </div>
 
         <!-- Container onde as tarefas serão renderizadas -->
         <div id="container"></div>

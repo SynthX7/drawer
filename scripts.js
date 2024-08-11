@@ -195,11 +195,11 @@ function toggleTheme() {
 
 function applyDarkTheme() {
     document.body.style.backgroundColor = "#2a2a2a"; // Cor de fundo escura
-    elements.saudacoes.style.color = "#ffffff"; // Cor do texto clara
+    elements.saudacoes.style.color = "#dadada"; // Cor do texto clara
 
     const tarefaElements = document.querySelectorAll('.tarefa');
     const checkboxElements = document.querySelectorAll('.checkbox');
-    const formulario = document.querySelectorAll('.form');
+    const formulario = document.querySelectorAll('.form', '#editar');
 
     formulario.forEach(formu => {
         formu.classList.add('formDark'); // Adiciona a classe para o formulário
