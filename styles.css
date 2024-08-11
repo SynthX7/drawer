@@ -4,45 +4,57 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f0f2f5;
+    background-color: #EBEBDF;
     font-family: 'League Spartan', sans-serif;
     transition: background-color 0.3s;
 }
 
 /* Formulário */
-.form {
-    width: 90%;
+.form,
+.formDark {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    height: -50px;
+    width: 90%;
+    max-width: 600px;
+    transition: background-color 0.3s;
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.42);
+    -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.42);
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.42);
+    z-index: 1000;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    z-index: 1000;
-    flex-direction: column;
-    align-items: center;
-    transition: background-color 0.2s;
 }
 
-.form textarea, input {
+.form {
+    background-color: #EBEBDF;
+    padding: 20px;
+}
+
+.formDark {
+    background-color: #212121;
+    padding: 20px;
+}
+
+/* Estilo dos campos do formulário */
+.form textarea, 
+.form input {
     margin: 0 auto;
     width: 80%;
     padding: 15px;
     font-size: 16px;
     background-color: #1c1c1c;
     border-radius: 10px;
+    border: none;
+    color: #EBEBDF;
     box-sizing: border-box;
     resize: none;
+    transition: background-color 0.3s box-shadow 0.4s;
     font-family: 'League Spartan', sans-serif;
-    transition: background-color 0.4s;
-    border: none;
 }
 
 /* Botão de envio */
@@ -52,20 +64,20 @@ body {
     padding: 13px 20px;
     font-size: 1rem;
     color: white;
-    background-color:#684327;
+    background-color: #684327;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s ;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 #enviar:hover {
-    background-color:#885d3c;
+    background-color: #885d3c;
     transform: scale(1.01);
 }
 
 /* Responsividade */
-@media (max-width: 480px) {
+@media (min-width: 480px) {
     #editar {
         padding: 15px;
         max-width: 90%;
@@ -76,11 +88,24 @@ body {
     #enviar {
         font-size: 0.9rem;
     }
+
 }
 
-/* Container */
+/* Containers */
 .container {
+    width: 90%;
     max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#container {
+    width: 90%;
+    max-width: 500px;
     margin: auto;
     padding: 20px;
     display: flex;
@@ -95,52 +120,51 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Aumentei a margem para maior espaçamento entre as tarefas */
+    padding: 20px; /* Aumentei o padding para dar mais espaço interno */
+    border-radius: 12px; /* Mantive o border-radius */
+    width: 100%; /* Agora ocupa 100% da largura disponível */
+    max-width: 1000px; /* Aumentei o max-width para até 1000px */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Aumentei o shadow para dar mais destaque */
     box-sizing: border-box;
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .tarefa {
     border: 1px solid #ddd;
-    background-color: #fff;
+    background-color: #f7f7f7; /* Ajustei a cor para um tom mais claro */
 }
 
 .tarefa:hover {
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transform: scale(1.01);
+    background-color: #e9e9e9; /* Ajustei a cor do hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Aumentei o shadow no hover */
 }
 
 .tarefaDark {
     border: 1px solid #474747;
-    background-color: #474747;
+    background-color: #383838; /* Ajustei a cor para um tom mais escuro */
     color: #dadada;
 }
 
 .tarefaDark:hover {
-    background-color: #595959;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transform: scale(1.01);
+    background-color: #4a4a4a; /* Ajustei a cor do hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Aumentei o shadow no hover */
 }
 
 .tarefaDark p {
     color: #bcbcbc;
 }
 
+
 /* Estilo para checkboxes */
 .checkbox,
 .checkboxDark {
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 20px; /* Reduzido */
+    height: 20px; /* Reduzido */
     border-radius: 50%;
     cursor: pointer;
-    margin-right: 15px;
+    margin-right: 10px; /* Ajuste de margem */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,7 +232,24 @@ body {
     border: none;
 }
 
-.menu,
+.menu {
+    top: 10px;
+    left: 10px;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+
 .criar {
     position: fixed;
     width: 60px;
@@ -222,13 +263,12 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s;
 }
 
 .menu {
     top: 10px;
     left: 10px;
-    margin: 10px;
 }
 
 .criar {
@@ -236,14 +276,30 @@ body {
     right: 30px;
 }
 
-.menu:hover,
+.menu:hover {
+    background-color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
+}
 .criar:hover {
     background-color: #b67d51;
     transform: scale(1.05);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
 }
 
-.menu:active,
+.menu:active {
+    background-color: #dadada;
+    transform: scale(0.99);
+}
+
+.menu img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.rotateImage {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease-in-out;
+}
 .criar:active {
     background-color: #dadada;
     transform: scale(0.99);
@@ -251,21 +307,69 @@ body {
 
 /* Visibilidade */
 .hidden {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s, visibility 0.15s;
 }
 
 .visible {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.15s, visibility 0.15s;
 }
 
-.formDark {
-    background-color:#212121;
+.lateralMenu {
+    background-color: #eaeaea; /* Cor de fundo */
+    transition: background-color 0.3s;
+}
+
+.lateralMenuDark {
+    background-color: #262626; /* Cor de fundo */
+    transition: background-color 0.3s;
+}
+
+.lateralMenuDark a {
+    color: #ddd;
+    transition: color 0.3s;
+}
+
+.lateralMenu a {
+    color: #080808;
+    transition: color 0.3s;
+}
+
+#lateralMenu {
+    position: fixed; /* Mantém o menu fixo na tela */
+    top: 80px; /* Distância do topo da tela */
+    bottom: 20px; /* Distância do fundo da tela */
+    left: 20px; /* Distância da lateral esquerda da tela */
+    width: 200px; /* Largura do menu */
+    padding: 15px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 15px rgb(6, 6, 6); /* Sombra para destacar o menu */
     display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    transition: background-color 0.4s;
+    flex-direction: column; /* Alinha os itens verticalmente */
+    justify-content: flex-start; /* Alinha o conteúdo ao topo */
+}
+
+
+.menuTarefas {
+    display: flex;
+    align-items: center;
+    color: rgb(32, 32, 32); /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado dos links */
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito no texto */
+    margin-bottom: 10px; /* Espaçamento entre os itens do menu */
+}
+
+.menuTarefas:hover {
+    color: #5c5c5c; /* Cor do texto ao passar o mouse */
+}
+
+.icon {
+    width: 15px;
+    height: 10px;
+    margin-right: 10px;
+    margin-left: 15px;
 }

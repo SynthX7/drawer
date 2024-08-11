@@ -16,18 +16,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="lateralMenu" class="hidden">
-        <a href="index.html" class="menuTarefas">
-            <img src="imgs/tasks-white.png" alt="Ícone" style="width: 15px; height: 10px; margin-right: 10px; margin-left: -10px;"> Tarefas
-        </a>
-    </div>
-
     <div class="container"> <!-- Container principal da aplicação -->
         
         <!-- Botão para abrir o menu -->
         <button id="menu" class="menu" onclick="toggleMenu()">
             <img id="iconMenu" src="imgs/menu-black.png" alt="Icone de menu"> <!-- Ícone usado no botão -->
         </button>
+
+        <div id="lateralMenu" class="hidden lateralMenu">
+            <a href="index.html" class="menuTarefas">
+                <img id="iconTask" src="imgs/tasks-black.png" alt="Ícone" style="width: 15px; height: 10px; margin-right: 10px; margin-left: -10px;"> Tarefas
+            </a>
+            <a>Em breve...</a>
+        </div>
+    
 
         <button onclick="toggleTheme()">tema</button>
 
@@ -42,8 +44,8 @@
         <!-- Formulário para criação de tarefas, inicialmente oculto -->
         <div id="editar" class="hidden">
             <form id="form" class="form" class="formDark"> <!-- Formulário para criar novas tarefas -->
-                <input placeholder="Título" type="text" id="titulo" name="titulo" maxlength="40"><br><br>
-                <textarea placeholder="Descrição" type="text" id="descricao" name="descricao" maxlength="100" rows="4"></textarea><br>
+                <input placeholder="Título" type="text" id="titulo" name="titulo" maxlength="40" autocomplete="off"><br><br>
+                <textarea placeholder="Descrição" type="text" id="descricao" name="descricao" maxlength="100" rows="4" autocomplete="off"></textarea><br>
 
                 <!-- Botão para submeter o formulário -->
                 <button id="enviar" type="submit" onclick="toggleVisibility()">Enviar</button>

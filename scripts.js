@@ -176,6 +176,7 @@ const elements = {
     descricaoInput: document.getElementById('descricao'),
     enviarButton: document.getElementById('enviar'),
     containerDiv: document.getElementById('container'),
+    lateralMenu: document.getElementById('lateralMenu')
 };
 
 let darkMode = false;
@@ -194,6 +195,13 @@ function toggleTheme() {
 }
 
 function applyDarkTheme() {
+    lateralMenu.classList.add('lateralMenuDark');
+    lateralMenu.classList.remove('lateralMenu');
+    document.getElementById('iconTask').src = 'imgs/tasks-white.png';
+
+    document.getElementById('menu').style.backgroundColor = "#2a2a2a";
+    document.getElementById('iconMenu').src = 'imgs/menu-white.png';
+
     document.body.style.backgroundColor = "#2a2a2a"; // Cor de fundo escura
     elements.saudacoes.style.color = "#dadada"; // Cor do texto clara
 
@@ -207,20 +215,26 @@ function applyDarkTheme() {
     tarefaElements.forEach(tarefa => {
         tarefa.classList.add('tarefaDark');
     });
-
     checkboxElements.forEach(checkbox => {
         checkbox.classList.add('checkboxDark');
     });
-
 }
 
 function applyLightTheme() {
-    document.body.style.backgroundColor = "#f0f2f5"; // Cor de fundo clara
+    lateralMenu.classList.add('lateralMenu');
+    lateralMenu.classList.remove('lateralMenuDark');
+    document.getElementById('iconTask').src = 'imgs/tasks-black.png';
+
+    document.getElementById('menu').style.backgroundColor = "#EBEBDF";
+    document.getElementById('iconMenu').src = 'imgs/menu-black.png';
+
+    document.body.style.backgroundColor = "#EBEBDF"; // Cor de fundo clara
     elements.saudacoes.style.color = "#333"; // Cor do texto escura
 
     const tarefaElements = document.querySelectorAll('.tarefaDark');
     const checkboxElements = document.querySelectorAll('.checkboxDark');
     const formulario = document.querySelectorAll('.form');
+    const menuLateral = document.querySelectorAll('#lateralMenu');
 
     formulario.forEach(formu => {
         formu.classList.remove('formDark'); // Remove a classe para o formulário
@@ -245,3 +259,14 @@ function toggleMenu() {
         menu.classList.add('hidden');
     }
 }
+
+document.getElementById("menu").addEventListener("click", function() {
+    const image = document.getElementById("iconMenu")
+
+    if (image.classList.contains('rotateImage')) {
+        image.classList.remove("rotateImage")
+    } else [
+        image.classList.add("rotateImage")
+    ]
+
+});
