@@ -7,7 +7,7 @@ Este projeto é um aplicativo de tarefas que permite aos usuários gerenciar sua
   - Adicionar título;
   - Adicionar descrição.
 - Marcar tarefas como concluídas;
-- Salvar as tarefas no navegador e o tema para que possa acessá-los mais tarde.
+- Salvar as tarefas no navegador e o tema para que possa acessá-lo mais tarde.
 
 Não é íncrivel, pois o mesmo está em constante desenvolvimento todos os dias, então é lançada uma nova atualização assim que possível.
 

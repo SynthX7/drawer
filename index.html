@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="icon" href="imgs/logo.png">
+    <link rel="icon" href="imgs/DrawerLogo.png">
     <meta charset="UTF-8"> <!-- Define o conjunto de caracteres como UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define a largura da viewport e o nível de zoom inicial -->
     <title>Tarefas - Drawer</title> <!-- Título da página exibido na aba do navegador -->
@@ -35,6 +35,13 @@
 
         <!-- Elemento para exibir a saudação -->
         <h1 id="saudacoes"></h1>
+
+        <!-- Adicione este bloco ao seu HTML -->
+        <div id="fotoSemTarefas" class="hidden">
+            <img class="img-empty" src="imgs/Empty-white.png" alt="Sem tarefas" style="height: 230px; width: 230px;"/>
+            <h2 class="h2-empty">Parece que não há tarefas<h2>
+            <h3 class="h3-empty">Aperte no '+' para adicionar uma nova</h3>
+        </div>
 
         <!-- Botão para criar uma nova tarefa -->
         <button id="toggleForm" class="criar" onclick="toggleVisibility()">

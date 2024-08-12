@@ -21,4 +21,4 @@ O software é fornecido "no estado em que se encontra", sem garantias de qualque
 O uso do app implica a aceitação total das condições acima.
 
 Link original do GitHub:
-https://github.com/SynthX7/app-de-tarefas
+https://github.com/SynthX7/drawer

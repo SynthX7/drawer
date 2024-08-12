@@ -162,6 +162,13 @@ function renderizarTarefas() {
         });
 
         verificarTemaTarefa();
+
+        const emptyMessage = document.getElementById('fotoSemTarefas')
+        if (container.innerHTML.trim() === '') {
+            emptyMessage.classList.remove('hidden')
+        } else {
+            emptyMessage.classList.add('hidden')
+        }
     });
 }
 
@@ -203,7 +210,25 @@ function applyDarkTheme() {
     document.getElementById('iconMenu').src = 'imgs/menu-white.png';
 
     document.body.style.backgroundColor = "#2a2a2a"; // Cor de fundo escura
-    elements.saudacoes.style.color = "#dadada"; // Cor do texto clara
+    elements.saudacoes.style.color = "#dadada"; // Cor do texto claro
+
+        // Para definir a cor do único elemento <h2> com a classe 'h2-empty'
+    const h2Element = document.querySelector('.h2-empty');
+    if (h2Element) {
+        h2Element.style.color = "#9e9e9e";
+    }
+
+    // Para definir a cor do único elemento <h3> com a classe 'h3-empty'
+    const h3Element = document.querySelector('.h3-empty');
+    if (h3Element) {
+        h3Element.style.color = "#9e9e9e";
+    }
+
+    // Para definir a fonte da única imagem com a classe 'img-empty'
+    const imgElement = document.querySelector('.img-empty');
+    if (imgElement) {
+        imgElement.src = "imgs/Empty-dark.png";
+    }
 
     const tarefaElements = document.querySelectorAll('.tarefa');
     const checkboxElements = document.querySelectorAll('.checkbox');
@@ -235,6 +260,25 @@ function applyLightTheme() {
     const checkboxElements = document.querySelectorAll('.checkboxDark');
     const formulario = document.querySelectorAll('.form');
     const menuLateral = document.querySelectorAll('#lateralMenu');
+
+    // Para definir a cor do único elemento <h2> com a classe 'h2-empty'
+    const h2Element = document.querySelector('.h2-empty');
+    if (h2Element) {
+        h2Element.style.color = "#9e9e9e";
+    }
+
+    // Para definir a cor do único elemento <h3> com a classe 'h3-empty'
+    const h3Element = document.querySelector('.h3-empty');
+    if (h3Element) {
+        h3Element.style.color = "#9e9e9e";
+    }
+
+    // Para definir a fonte da única imagem com a classe 'img-empty'
+    const imgElement = document.querySelector('.img-empty');
+    if (imgElement) {
+        imgElement.src = "imgs/Empty-white.png";
+    }
+
 
     formulario.forEach(formu => {
         formu.classList.remove('formDark'); // Remove a classe para o formulário

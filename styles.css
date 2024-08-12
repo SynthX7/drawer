@@ -91,6 +91,24 @@ body {
 
 }
 
+*{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active {
+    outline: none;
+}
+
 /* Containers */
 .container {
     width: 90%;
@@ -155,6 +173,20 @@ body {
     color: #bcbcbc;
 }
 
+#fotoSemTarefas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#fotoSemTarefas h2, h3 {
+    color: #4a4a4a;
+}
+
+#fotoSemTarefas h2 {
+    margin-bottom: -5px;
+}
 
 /* Estilo para checkboxes */
 .checkbox,
