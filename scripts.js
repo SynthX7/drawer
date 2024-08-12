@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     criar(); // Inicializa a funcionalidade de criação de tarefas
     atualizarSaudacao()
     setInterval(atualizarSaudacao, 60000); // Atualiza a saudação
+    vericarEmpty()
 
     // Aplica o tema salvo
     const savedTheme = localStorage.getItem('theme');
@@ -159,17 +160,23 @@ function renderizarTarefas() {
             localStorage.setItem('tarefas', JSON.stringify(tarefas));
             renderizarTarefas(); // Re-renderiza as tarefas para atualizar a visualização
             verificarTemaTarefa();
+
+            vericarEmpty()
+
         });
 
+        vericarEmpty()
         verificarTemaTarefa();
-
-        const emptyMessage = document.getElementById('fotoSemTarefas')
-        if (container.innerHTML.trim() === '') {
-            emptyMessage.classList.remove('hidden')
-        } else {
-            emptyMessage.classList.add('hidden')
-        }
     });
+}
+
+function vericarEmpty() {
+    const emptyMessage = document.getElementById('fotoSemTarefas')
+    if (container.innerHTML.trim() === '') {
+        emptyMessage.classList.remove('hidden')
+    } else {
+        emptyMessage.classList.add('hidden')
+    }
 }
 
 const elements = {
@@ -215,19 +222,30 @@ function applyDarkTheme() {
         // Para definir a cor do único elemento <h2> com a classe 'h2-empty'
     const h2Element = document.querySelector('.h2-empty');
     if (h2Element) {
-        h2Element.style.color = "#9e9e9e";
+        h2Element.style.color = "#4f4f4f";
     }
 
     // Para definir a cor do único elemento <h3> com a classe 'h3-empty'
     const h3Element = document.querySelector('.h3-empty');
     if (h3Element) {
-        h3Element.style.color = "#9e9e9e";
+        h3Element.style.color = "#4f4f4f";
     }
 
     // Para definir a fonte da única imagem com a classe 'img-empty'
     const imgElement = document.querySelector('.img-empty');
     if (imgElement) {
-        imgElement.src = "imgs/Empty-dark.png";
+        // Define a opacidade para 0
+        imgElement.style.opacity = '0';
+    
+        // Aguarda o tempo suficiente para a transição de opacidade antes de mudar a imagem
+        setTimeout(() => {
+            imgElement.src = "imgs/Empty-dark.png"; // Troca a imagem
+    
+            // Aguarda a mudança da imagem ser aplicada e então redefine a opacidade
+            setTimeout(() => {
+                imgElement.style.opacity = '1';
+            }, 50); // O atraso é pequeno para garantir que a troca de imagem tenha efeito
+        }, 400); // O tempo deve corresponder ao tempo da transição de opacidade
     }
 
     const tarefaElements = document.querySelectorAll('.tarefa');
@@ -276,7 +294,18 @@ function applyLightTheme() {
     // Para definir a fonte da única imagem com a classe 'img-empty'
     const imgElement = document.querySelector('.img-empty');
     if (imgElement) {
-        imgElement.src = "imgs/Empty-white.png";
+        // Define a opacidade para 0
+        imgElement.style.opacity = '0';
+    
+        // Aguarda o tempo suficiente para a transição de opacidade antes de mudar a imagem
+        setTimeout(() => {
+            imgElement.src = "imgs/Empty-white.png"; // Troca a imagem
+    
+            // Aguarda a mudança da imagem ser aplicada e então redefine a opacidade
+            setTimeout(() => {
+                imgElement.style.opacity = '1';
+            }, 50); // O atraso é pequeno para garantir que a troca de imagem tenha efeito
+        }, 400); // O tempo deve corresponder ao tempo da transição de opacidade
     }
 
 
@@ -306,11 +335,31 @@ function toggleMenu() {
 
 document.getElementById("menu").addEventListener("click", function() {
     const image = document.getElementById("iconMenu")
+    const button = document.getElementById("menu")
 
     if (image.classList.contains('rotateImage')) {
+        button.classList.remove('scaleButton'),
         image.classList.remove("rotateImage")
     } else [
-        image.classList.add("rotateImage")
+        image.classList.add("rotateImage"),
+        button.classList.add('scaleButton')
     ]
 
 });
+
+function ajustarTamanhoElemento() {
+    const elemento = document.getElementById('fotoSemTarefas'); // substitua com o id do seu elemento
+
+    if (window.innerWidth < 600) { // se a largura da tela for menor que 600px
+        elemento.style.top = "190px"
+        elemento.style.scale = '0.89';
+    } else {
+        elemento.style.scale = '1.0';
+    }
+}
+
+// Chamar a função ao carregar a página
+window.onload = ajustarTamanhoElemento;
+
+// Chamar a função ao redimensionar a janela
+window.onresize = ajustarTamanhoElemento;

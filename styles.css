@@ -7,6 +7,11 @@ body {
     background-color: #EBEBDF;
     font-family: 'League Spartan', sans-serif;
     transition: background-color 0.3s;
+
+    user-select: none; /* Impede a seleção do texto/imagem */
+    -webkit-user-select: none; /* Compatibilidade com navegadores WebKit (Safari/Chrome) */
+    -moz-user-select: none; /* Compatibilidade com Firefox */
+    -ms-user-select: none; /* Compatibilidade com Internet Explorer/Edge */
 }
 
 /* Formulário */
@@ -328,6 +333,12 @@ a:active {
     transition: transform 0.3s ease-in-out;
 }
 
+.scaleButton {
+    transform: scale(1.05);
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
 .rotateImage {
     transform: rotate(90deg);
     transition: transform 0.3s ease-in-out;
@@ -370,15 +381,30 @@ a:active {
     transition: color 0.3s;
 }
 
+.lateralMenu a,
+.lateralMenuDark a {
+    font-size: 18px;
+    margin: -5px;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10pxs;
+    transition: color 0.3s;
+}
+
+.lateralMenu a:hover {
+    background-color: #9e9e9e;
+    transition: color 0.3s;
+}
+
 #lateralMenu {
     position: fixed; /* Mantém o menu fixo na tela */
     top: 80px; /* Distância do topo da tela */
     bottom: 20px; /* Distância do fundo da tela */
     left: 20px; /* Distância da lateral esquerda da tela */
     width: 200px; /* Largura do menu */
-    padding: 15px; /* Espaçamento interno */
+    padding: 20px; /* Espaçamento interno */
     border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 4px 15px rgb(6, 6, 6); /* Sombra para destacar o menu */
+    box-shadow: 0 4px 9px rgb(23, 23, 23, 0.5); /* Sombra para destacar o menu */
     display: flex;
     flex-direction: column; /* Alinha os itens verticalmente */
     justify-content: flex-start; /* Alinha o conteúdo ao topo */
@@ -395,13 +421,18 @@ a:active {
     margin-bottom: 10px; /* Espaçamento entre os itens do menu */
 }
 
-.menuTarefas:hover {
-    color: #5c5c5c; /* Cor do texto ao passar o mouse */
-}
-
 .icon {
     width: 15px;
     height: 10px;
     margin-right: 10px;
     margin-left: 15px;
+}
+
+#fotoSemTarefas {
+    position: fixed;
+    top: 220px;
+}
+
+.img-empty {
+    transition: opacity 0.3s
 }
