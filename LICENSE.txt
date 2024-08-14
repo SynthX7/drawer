@@ -1,0 +1,20 @@
+Code Usage and Distribution License
+Copyright (c) 2024 InnoVision
+
+Terms of Use
+Non-Commercial Use: The app may only be used for non-commercial purposes. Non-commercial use means that the software may only be used for personal or educational purposes, without any form of financial compensation.
+
+Prohibition of Modification and Redistribution: The app may not be modified, adapted, or altered in any way without proper attribution to the original author. Modifications may not be redistributed without the express written permission of the author.
+
+Prohibition of Creating Derivative Works: It is prohibited to create derivative works, including modified versions, adaptations, translations, and compilations of the app.
+
+Attribution: Any use of the app must give credit to the original author, including the mention 'Developed by InnoVision' in the user interface or associated documentation.
+
+Disclaimer
+The software is provided "as is", without warranties of any kind, express or implied. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from the use of the app.
+
+Acceptance
+Use of the app implies full acceptance of the above conditions.
+
+Original GitHub link:
+https://github.com/SynthX7/drawer
