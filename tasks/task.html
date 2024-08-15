@@ -2,9 +2,9 @@
 <html lang="pt-br">
 <head>
     <link rel="icon" href="imgs/DrawerLogo.png">
-    <meta charset="UTF-8"> <!-- Define o conjunto de caracteres como UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define a largura da viewport e o nível de zoom inicial -->
-    <title>Tarefas - Drawer</title> <!-- Título da página exibido na aba do navegador -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas - Drawer</title> 
 
     <!-- Link para o arquivo CSS que contém os estilos da página -->
     <link rel="stylesheet" href="styles.css">
@@ -16,51 +16,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container"> <!-- Container principal da aplicação -->
+    <!-- Container principal da aplicação -->
+    <div class="principal-container">
         
-        <!-- Botão para abrir o menu -->
-        <button id="menu" class="menu" onclick="toggleMenu()">
-            <img id="iconMenu" src="imgs/menu-black.png" alt="Icone de menu"> <!-- Ícone usado no botão -->
-        </button>
-
-        <div id="lateralMenu" class="hidden lateralMenu">
-            <a href="index.html" class="menuTarefas">
-                <img id="iconTask" src="imgs/tasks-black.png" alt="Ícone" style="width: 15px; height: 10px; margin-right: 10px; margin-left: -10px;"> Tarefas
+        <!-- Barra lateral -->
+        <div id="lateral-bar" class="tool-bar">
+            <a href="task.html" class="lateral-itens">
+                <img id="icon-task" src="imgs/tasks-black.png" alt="Task icon" style="width: 20px; height: 15px; margin-bottom: 65px;">
             </a>
-            <a>Em breve...</a>
+            <a href="drawer/notes/notes.html" class="lateral-itens">
+            </a>
         </div>
     
-
-        <button onclick="toggleTheme()">tema</button>
+        <!-- Botão provisório para alterar o tema -->
+        <button onclick="toggleTheme()">Theme</button>
 
         <!-- Elemento para exibir a saudação -->
-        <h1 id="saudacoes"></h1>
+        <h1 id="greeting"></h1>
 
         <!-- Adicione este bloco ao seu HTML -->
-        <div id="fotoSemTarefas" class="hidden">
+        <div id="alert-no-task" class="hidden">
             <img class="img-empty" src="imgs/Empty-white.png" alt="Sem tarefas" style="height: 230px; width: 230px;"/>
             <h2 class="h2-empty">Parece que não há tarefas<h2>
             <h3 class="h3-empty">Aperte no '+' para adicionar uma nova</h3>
         </div>
 
         <!-- Botão para criar uma nova tarefa -->
-        <button id="toggleForm" class="criar" onclick="toggleVisibility()">
+        <button id="add-task" class="add-task" onclick="toggleVisibility()">
             <img id="plusIcon" src="imgs/plus-icon-black.png" alt="Adicionar tarefa"> <!-- Ícone usado no botão -->
         </button>
 
         <!-- Formulário para criação de tarefas, inicialmente oculto -->
-        <div id="editar" class="hidden">
+        <div id="edit" class="hidden">
             <form id="form" class="form" class="formDark"> <!-- Formulário para criar novas tarefas -->
-                <input placeholder="Título" type="text" id="titulo" name="titulo" maxlength="40" autocomplete="off"><br><br>
-                <textarea placeholder="Descrição" type="text" id="descricao" name="descricao" maxlength="100" rows="4" autocomplete="off"></textarea><br>
+                <input placeholder="Título" type="text" id="title" name="titulo" maxlength="40" autocomplete="off"><br><br>
+                <textarea placeholder="Descrição" type="text" id="description" name="descricao" maxlength="200" rows="4" autocomplete="off"></textarea><br>
 
                 <!-- Botão para submeter o formulário -->
-                <button id="enviar" type="submit" onclick="toggleVisibility()">Enviar</button>
+                <button id="submit" type="submit" onclick="toggleVisibility()">Enviar</button>
             </form>
         </div>
 
         <!-- Container onde as tarefas serão renderizadas -->
-        <div id="container"></div>
+        <div id="task-container"></div>
 
         <!-- Link para o arquivo JavaScript que contém a lógica da aplicação -->
         <script src="scripts.js"></script>
