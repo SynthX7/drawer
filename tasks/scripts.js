@@ -5,25 +5,22 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateGreeting, 60000);
     verifyEmpty();
     isMobileDevice();
-
     applySaveTheme();
 });
 
 function applySaveTheme() {
     const savedTheme = localStorage.getItem('theme');
     const isDarkMode = savedTheme === 'dark';
-
     darkMode = isDarkMode;
     isDarkMode ? applyDarkTheme() : applyLightTheme();
 }
 
-
 // Adiciona os temas de acordo com o que há salvo
 function verifyTaskTheme() {
     const isDarkMode = darkMode === true;
-    const taskElements = document.querySelectorAll(isDarkMode ? '.task' : '.taskDark');
-    const checkboxElements = document.querySelectorAll(isDarkMode ? '.checkbox' : '.checkboxDark');
-    
+    const taskElements = document.querySelectorAll('.task');
+    const checkboxElements = document.querySelectorAll('.checkbox');
+
     taskElements.forEach(task => {
         task.classList.toggle('taskDark', isDarkMode);
     });
@@ -35,12 +32,10 @@ function verifyTaskTheme() {
 
 // Atualiza a saudação com base no horário
 function updateGreeting() {
-    const greeting = document.getElementById('greeting'); // Seleciona o elemento onde a saudação será exibida
-    const hour = new Date().getHours(); // Obtém a hora atual
-
+    const greeting = document.getElementById('greeting');
+    const hour = new Date().getHours();
     let greetingText;
 
-    // Atualiza o texto da saudação com base na hora do dia
     if (hour >= 22 || hour < 6) {
         greetingText = hour >= 22 ? "Bons sonhos" : "Boa madrugada";
     } else if (hour >= 18) {
@@ -59,13 +54,11 @@ let isVisible = false;
 
 function toggleVisibility() {
     const edit = document.getElementById('edit');
-
     if (!edit) return;
 
-    edit.classList.toggle('hidden');
-    edit.classList.toggle('visible');
-
-    isVisible = !isVisible
+    isVisible = !isVisible;
+    edit.classList.toggle('hidden', !isVisible);
+    edit.classList.toggle('visible', isVisible);
 }
 
 // Função para criar novas tarefas
@@ -79,10 +72,9 @@ function add() {
         const title = document.getElementById('title').value.trim();
         const desc = document.getElementById('description').value.trim();
 
-        if (!authenticateInput(title, desc)) return; // Inverte o retorno de authenticateInput: Se for verdadeiro, o return não executa. Mas se for falso ele executa o return e cancela o código. 
+        if (!authenticateInput(title, desc)) return;
 
         saveTask({ title, desc, check: false });
-
         renderTasks();
         
         document.getElementById('title').value = '';
@@ -92,7 +84,7 @@ function add() {
 
 // Função para validar os campos
 function authenticateInput(titulo, descricao) {
-    if (title === "" && desc === "") {
+    if (titulo === "" && descricao === "") {
         alert("Campos vazios!");
         return false;
     } else if (titulo === "") {
@@ -104,7 +96,7 @@ function authenticateInput(titulo, descricao) {
 
 // Função para adicionar uma nova tarefa ao localStorage
 function saveTask(task) {
-    const task = JSON.parse(localStorage.getItem('tasks')) || [];
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
@@ -112,103 +104,96 @@ function saveTask(task) {
 // Função para renderizar as tarefas na tela
 function renderTasks() {
     const container = document.getElementById('task-container');
-    if (!container) return; 
+    if (!container) return;
 
     container.innerHTML = '';
 
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Obtém a lista de tarefas armazenadas
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Verificação adicionada
 
-    // Itera sobre cada tarefa e a adiciona ao container
     tasks.forEach((task, index) => {
-        if (task.check) return; // Ignora tarefas já marcadas
+        if (task.check) return;
 
-        // Cria elementos para a nova tarefa
-        const newTask = document.createElement('div');
-        newTask.className = "task";
-        newTask.id = `task-${index}`; // Define um ID único para cada tarefa
+        const newtask = document.createElement('div');
+        newtask.className = "task";
+        newtask.id = `task-${index}`;
 
         const quickEdit = document.createElement('button');
         quickEdit.className = 'edit-quick';
         quickEdit.id = `edit-${index}`;
 
         const editImage = document.createElement('img');
-        editImage.id = `icon-edit-${index}`; // Ajustado para ID único
+        editImage.id = `icon-edit-${index}`;
         editImage.className = 'edit-icon';
         editImage.src = "imgs/edit-icon-white.png";
         editImage.alt = "Editar tarefa";
 
-        // Adiciona a imagem ao botão de edição
         quickEdit.appendChild(editImage);
 
-        const inputNewTask = document.createElement('input');
-        inputNewTask.type = "checkbox";
-        inputNewTask.className = "checkbox";
-        inputNewTask.id = `checkbox-${index}`;
-        inputNewTask.checked = tarefa.check;
+        const inputtask = document.createElement('input');
+        inputtask.type = "checkbox";
+        inputtask.className = "checkbox";
+        inputtask.id = `checkbox-${index}`;
+        inputtask.checked = task.check;
 
-        const textsNewTask = document.createElement('div');
-        textsNewTask.className = "texto-tarefa";
+        const textstask = document.createElement('div');
+        textstask.className = "text-task";
 
-        const titleNewTask = document.createElement('h2');
-        titleNewTask.className = "title-task";
-        titleNewTask.textContent = tarefa.title;
+        const titletask = document.createElement('h2');
+        titletask.className = "title-task";
+        titletask.textContent = task.title;
 
-        const descNewTask = document.createElement('p');
-        descNewTask.className = "desc-task";
-        descNewTask.textContent = tarefa.desc;
+        const desctask = document.createElement('p');
+        desctask.className = "desc-task";
+        desctask.textContent = task.desc;
 
-        textsNewTask.appendChild(titleNewTask);
-        textsNewTask.appendChild(descNewTask);
-        newTask.appendChild(inputNewTask);
-        newTask.appendChild(textsNewTask);
-        newTask.appendChild(quickEdit);
-        container.appendChild(newTask);
+        textstask.appendChild(titletask);
+        textstask.appendChild(desctask);
+        newtask.appendChild(inputtask);
+        newtask.appendChild(textstask);
+        newtask.appendChild(quickEdit);
+        container.appendChild(newtask);
 
-        // Adiciona um evento para atualizar o estado da tarefa quando o checkbox for alterado
-        inputNewTask.addEventListener('change', function() {
-            task[index].check = this.checked;
-            localStorage.setItem('tasj', JSON.stringify(task));
+        inputtask.addEventListener('change', function() {
+            tasks[index].check = this.checked;
+            localStorage.setItem('tasks', JSON.stringify(tasks));
             renderTasks();
             verifyTaskTheme();
             verifyEmpty();
         });
     });
 
-    // Funções de verificação após renderização
     verifyEmpty();
     verifyTaskTheme();
 }
 
+
 function verifyEmpty() {
-    const emptyMessage = document.getElementById('alert-no-task')
+    const emptyMessage = document.getElementById('alert-no-task');
+    const container = document.getElementById("task-container");
     if (container.innerHTML.trim() === '') {
-        emptyMessage.classList.remove('hidden')
+        emptyMessage.classList.remove('hidden');
     } else {
-        emptyMessage.classList.add('hidden')
+        emptyMessage.classList.add('hidden');
     }
 }
 
 let darkMode = false;
 
 function toggleTheme() {
-    if (darkMode === false) {
-        applyDarkTheme();
-        darkMode = !darkMode;
-        console.log(darkMode)
-    } else {
-        applyLightTheme();
-        darkMode = !darkMode;
-        console.log(darkMode)
-    }
+    darkMode = !darkMode;
+    darkMode ? applyDarkTheme() : applyLightTheme();
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
 }
 
 function applyDarkTheme() {
-    lateralMenu.classList.add('lateralMenuDark');
-    lateralMenu.classList.remove('lateralMenu');
+    let lateralMenu = document.getElementById('lateral-bar');
+    lateralMenu.classList.add('tool-barDark');
+    lateralMenu.classList.remove('tool-bar');
     document.getElementById('icon-task').src = 'imgs/tasks-white.png';
     let greeting = document.getElementById('greeting');
 
+    const lateralBar = document.getElementById("lateral-bar");
+    lateralBar.style.backgroundColor = '#f0f0f0';
 
     document.body.style.backgroundColor = "#2a2a2a";
     greeting.style.color = "#dadada";
@@ -225,19 +210,16 @@ function applyDarkTheme() {
 
     const imgElement = document.querySelector('.img-empty');
     if (imgElement) {
-  
         imgElement.style.opacity = '0';
-    
         setTimeout(() => {
             imgElement.src = "imgs/Empty-dark.png";
-    
             setTimeout(() => {
                 imgElement.style.opacity = '1';
             }, 50);
         }, 400);
     }
 
-    const taskElements = document.querySelectorAll('.task');
+    const taskHtml = document.querySelectorAll('.task');
     const checkboxElements = document.querySelectorAll('.checkbox');
     const formElement = document.querySelectorAll('.form', '#edit');
 
@@ -246,7 +228,7 @@ function applyDarkTheme() {
         formu.classList.remove('form');
     });
 
-    taskElements.forEach(tarefa => {
+    taskHtml.forEach(tarefa => {
         tarefa.classList.add('taskDark');
         tarefa.classList.remove('task');
     });
@@ -258,9 +240,12 @@ function applyDarkTheme() {
 }
 
 function applyLightTheme() {
-    lateralMenu.classList.add('lateralMenu');
-    lateralMenu.classList.remove('lateralMenuDark');
-    document.getElementById('iconTask').src = 'imgs/tasks-black.png';
+    let lateralMenu = document.getElementById("lateral-bar");
+
+    lateralMenu.classList.add('tool-bar');
+    lateralMenu.classList.remove('tool-barDark');
+    document.getElementById('icon-task').src = 'imgs/tasks-black.png';
+    let greeting = document.getElementById('greeting');
 
     document.body.style.backgroundColor = "#f0f0f0";
     greeting.style.color = "#333";
@@ -286,18 +271,18 @@ function applyLightTheme() {
         }, 400);
     }
 
-    const tasklements = document.querySelectorAll('.taskDark');
+    const taskHtml = document.querySelectorAll('.taskDark');
     const checkboxElements = document.querySelectorAll('.checkboxDark');
-    const formElement = document.querySelectorAll('.formDark', '#editar');
+    const formElement = document.querySelectorAll('.formDark', '#edit');
 
     formElement.forEach(formu => {
         formu.classList.add('form');
         formu.classList.remove('formDark');
     });
 
-    taskElements.forEach(tarefa => {
-        tarefa.classList.add('tarefa');
-        tarefa.classList.remove('tarefaDark');
+    taskHtml.forEach(tarefa => {
+        tarefa.classList.add('task');
+        tarefa.classList.remove('taskDark');
     });
 
     checkboxElements.forEach(checkbox => {
@@ -339,12 +324,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 });
 
-// Chamar a função ao carregar a página
-window.onload = ajustarTamanhoElemento;
-
-// Chamar a função ao redimensionar a janela
-window.onresize = ajustarTamanhoElemento;
-
 document.addEventListener('DOMContentLoaded', () => {
     const editButtons = document.getElementsByClassName('edit-quick');
     const taskTitles = document.getElementsByClassName('task');
@@ -357,10 +336,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskDescArray = Array.from(taskDescs);
 
     // Load tarefas from localStorage
-    let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+    let tarefas = JSON.parse(localStorage.getItem('tasks')) || [];
 
     function saveTarefas() {
-        localStorage.setItem('tarefas', JSON.stringify(tarefas));
+        localStorage.setItem('tasks', JSON.stringify(tarefas));
     }
 
     // Adding event listeners to all edit buttons
@@ -391,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 tarefas[index].marcado = this.checked;
                                 localStorage.setItem('tarefas', JSON.stringify(tarefas));
                                 renderTasks(); // Re-renderiza as tarefas para atualizar a visualização
-                                veraddrTemaTarefa();
+                                verifyTaskTheme();
                                 verifyEmpty();
                             });
                         }
@@ -431,26 +410,28 @@ function isMobileDevice() {
 // Exemplo de uso
 if (isMobileDevice()) {
     // Seleciona o elemento com o ID 'lateralMenu'
-    const lateralMenu = document.getElementById('lateralMenu');
+    const lateralBar = document.getElementById('lateral-bar');
 
-    lateralMenu.style.position = 'fixed';
-    lateralMenu.style.bottom = '10px'; // Ajustado para maior espaçamento do fundo
-    lateralMenu.style.left = '50%'; // Centraliza horizontalmente
-    lateralMenu.style.top = '89%'
-    lateralMenu.style.transform = 'translateX(-50%)'; // Ajusta para centralizar
-    lateralMenu.style.height = '50px'
-    lateralMenu.style.width = 'calc(100% - 20px)'; // Ajusta a largura com uma margem
-    lateralMenu.style.maxWidth = '1000px'; // Largura máxima
-    lateralMenu.style.padding = '20px'; // Espaçamento interno
-    lateralMenu.style.borderRadius = '12px'; // Bordas arredondadas
-    lateralMenu.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)'; // Sombra do menu
-    lateralMenu.style.boxSizing = 'border-box'; // Inclui padding e border na largura total
-    lateralMenu.style.display = 'flex'; // Exibe como flex container
-    lateralMenu.style.transition = 'background-color 0.3s, box-shadow 0.3s'; // Adiciona transições suaves
+    lateralBar.style.position = 'fixed';
+    lateralBar.style.bottom = '10px'; // Ajustado para maior espaçamento do fundo
+    lateralBar.style.left = '50%'; // Centraliza horizontalmente
+    lateralBar.style.top = '89%'
+    lateralBar.style.transform = 'translateX(-50%)'; // Ajusta para centralizar
+    lateralBar.style.height = '50px'
+    lateralBar.style.width = 'calc(100% - 20px)'; // Ajusta a largura com uma margem
+    lateralBar.style.maxWidth = '1000px'; // Largura máxima
+    lateralBar.style.padding = '20px'; // Espaçamento interno
+    lateralBar.style.borderRadius = '12px'; // Bordas arredondadas
+    lateralBar.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)'; // Sombra do menu
+    lateralBar.style.boxSizing = 'border-box'; // Inclui padding e border na largura total
+    lateralBar.style.display = 'flex'; // Exibe como flex container
+    lateralBar.style.transition = 'background-color 0.3s, box-shadow 0.3s'; // Adiciona transições suaves
 
-    const empty = document.getElementById('lateralMenu')
+    const empty = document.getElementById('alert-no-task')
 
-    empty.style.scale = '0.1'
+    empty.style.scale = '0.7'
+    empty.style.marginTop = '-50px'
+    empty.style.fontSize = '14px'
 
 } else {
     console.log("O dispositivo não é um celular.");
