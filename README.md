@@ -38,6 +38,7 @@ git clone http://github.com/SynthX7/drawer
 
 ## Contribuição
 Caso queira de contribuir para este projeto, por favor, faça um fork do repositório e envie um pull request com suas alterações.
+Ou faça um issue caso tenha dúvidas ou apenas queira comentar algo relacionado.
 
 ## Suporte
 Caso encontre algum erro durante o processo ou dentro do app, por favor, abra uma issue no GitHub Issues ou entre em contato conosco através do e-mail: <br>
