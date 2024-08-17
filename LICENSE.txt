@@ -1,5 +1,5 @@
 Code Usage and Distribution License
-Copyright (c) 2024 InnoVision
+Copyright (c) 2024 Innovision
 
 Terms of Use
 Non-Commercial Use: The app may only be used for non-commercial purposes. Non-commercial use means that the software may only be used for personal or educational purposes, without any form of financial compensation.
