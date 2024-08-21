@@ -347,27 +347,23 @@ a:active {
 
 /* Barra lateral */
 .tool-bar {
-    background-color: #eaeaea; /* Cor de fundo */
-    transition: background-color 0.3s;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
 
-.tool-barDark {
-    background-color: #313131; /* Cor de fundo */
-    transition: background-color 0.3s;
-}
+    top: 50%; /* Alinha a barra ao topo da tela */
+    left: 1%; /* Alinha a barra à lateral esquerda da tela */
+    transform: translateY(-50%);
 
-.tool-barDark a {
-    color: #ddd;
-    transition: color 0.3s;
+    width: 5.5%; /* Largura da barra lateral */
+    height: 95%; /* Altura total da tela */
+    background-color: #f0f0f0; /* Cor de fundo para visualização */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    border-radius: 20px;
 }
 
 .tool-bar a {
-    color: #080808;
-    transition: color 0.3s;
-}
-
-.tool-bar a,
-.tool-barDark a {
     margin: -5px;
     margin-bottom: 10px;
     padding: 15px;
@@ -375,33 +371,21 @@ a:active {
     transition: opacity 0.3s;
     width: 50px;
     height: 50px;
+    transition: background-color 0.3s;
 }
 
-.tool-bar a:hover,
-.tool-barDark a:hover {
+.tool-bar a:hover {
     opacity: 0.5;
     transition: opacity 0.3s;
-}
-
-.tool-bar,
-.tool-barDark {
-    width: 60px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
-    position: fixed; /* Mantém a barra fixa na lateral */
-    border-radius: 15px;
-    top: 3%;
-    bottom: 3%;
-    left: 2%;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar a barra */
 }
 
 .lateral-item {
     margin-top: 30px;
     margin-bottom: 10px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tool-bar img {
@@ -409,11 +393,6 @@ a:active {
     width: 30px;
     height: 30px;
 }
-
-#icon-note {
-    margin: 07px;
-}
-
 
 /* Botão de editar tarefas */
 .edit-image {

@@ -186,9 +186,19 @@ function toggleTheme() {
 }
 
 function applyDarkTheme() {
-    let lateralMenu = document.getElementById('lateral-bar');
-    lateralMenu.classList.add('tool-barDark');
-    lateralMenu.classList.remove('tool-bar');
+    let lateralMenu = document.getElementsByClassName('tool-bar');
+    let lateralItens = document.getElementsByClassName('lateral-itens');
+
+    // Iterando sobre a coleção de elementos para aplicar o estilo
+    for (let i = 0; i < lateralMenu.length; i++) {
+        lateralMenu[i].style.backgroundColor = "#1c1c1c";
+    }
+
+    for (let i = 0; i < lateralItens.length; i++) {
+        lateralItens[i].style.color = "#ddd";
+    }
+
+
     document.getElementById('icon-task').src = 'imgs/tasks-white.png';
     let greeting = document.getElementById('greeting');
 
@@ -240,10 +250,18 @@ function applyDarkTheme() {
 }
 
 function applyLightTheme() {
-    let lateralMenu = document.getElementById("lateral-bar");
+    let lateralMenu = document.getElementsByClassName('tool-bar');
+    let lateralItens = document.getElementsByClassName('lateral-itens');
 
-    lateralMenu.classList.add('tool-bar');
-    lateralMenu.classList.remove('tool-barDark');
+    // Iterando sobre a coleção de elementos para aplicar o estilo
+    for (let i = 0; i < lateralMenu.length; i++) {
+        lateralMenu[i].style.backgroundColor = "#eaeaea";
+    }
+
+    for (let i = 0; i < lateralItens.length; i++) {
+        lateralItens[i].style.color = "#080808";
+    }
+
     document.getElementById('icon-task').src = 'imgs/tasks-black.png';
     let greeting = document.getElementById('greeting');
 
