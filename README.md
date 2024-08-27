@@ -9,11 +9,11 @@ Este projeto é um aplicativo de tarefas que permite aos usuários gerenciar sua
 - Marcar tarefas como concluídas;
 - Salvar as tarefas no navegador e o tema para que possa acessá-lo mais tarde.
 
-Não é íncrivel, pois o mesmo está em constante desenvolvimento todos os dias, então é lançada uma nova atualização assim que possível.
+O mesmo está em constante desenvolvimento todos os dias, então é lançada uma nova atualização assim que possível.
 
 ## Licença
 
-Este projeto está licenciado sob a Licença de Uso e Distribuição de Código. Para mais detalhes, consulte o arquivo [LICENSE.md](LICENSE.md) no diretório raiz deste repositório.
+Este projeto está licenciado sob a Licença de Uso e Distribuição de Código. Para mais detalhes, consulte o arquivo [LICENSE.txt](LICENSE.txt) no diretório raiz deste repositório.
 
 ## Instalação
 
